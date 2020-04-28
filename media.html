@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CAFE WHRERE</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+      $('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+      var ss = $(this).attr("href");
+      $('html, body').animate({scrollTop:ss});
+      return false;
+      });
+      });
+    </script>
+    <script type="text/javascript">
+      var stmnLEFT = 10; // 오른쪽 여백
+      var stmnGAP1 = 0; // 위쪽 여백
+      var stmnGAP2 = 100; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+      var stmnBASE = 100; // 스크롤 시작위치
+      var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+      var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
+      var stmnTimer;
+      function RefreshStaticMenu() {
+      var stmnStartPoint, stmnEndPoint;
+      stmnStartPoint = parseInt(document.getElementById('header').style.top, 10);
+      stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+      if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+      if (stmnStartPoint != stmnEndPoint) {
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+      document.getElementById('header').style.top = parseInt(document.getElementById('header').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+      stmnRefreshTimer = stmnScrollSpeed;
+      }
+      stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+      }
+      function InitializeStaticMenu() {
+      document.getElementById('header').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치.
+      document.getElementById('header').style.top = document.body.scrollTop + stmnBASE + 'px';
+      RefreshStaticMenu();
+      }
+    </script>
+    <body onload="InitializeStaticMenu();"></body>
+  </head>
+  <body>
+    <div id=header>
+      <h1><strong>CAFE WHERE</strong></h1>
+      <div id=menu>
+        <ul>
+          <li><a href="index.html">ABOUT</li>
+          <li><a href="cafe.html">CAFE</a></li>
+          <li><a href="map.html">MAP</a></li>
+          <li class="orange">MEDIA</li>
+          <li><a href="personal.html">PERSONAL</a></li>
+          <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+          <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id=middle4>
+      <div id=media><h1>Cafe-related Media</h1>
+        <ol>
+          <h2>
+            <li>카페 지식
+              <ul>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCaFFUrnm2Dre8Z92hM5LMag/featured?disable_polymer=1" target=_blank>최쎄오 Choi CEO</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/49SvxYdbAgk?list=PLC069ma6Tz1NjdI663CNPIJUAeUI224zX" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ry10mcbXAkc?list=PLC069ma6Tz1NjdI663CNPIJUAeUI224zX" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UC0qnwwpDhqPmrYegf1bPO6A" target=_blank>커핑포스트</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/anen3pOlBgk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kfb-BBnDYqU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UC5LdzyiHGlQ-GBUqszIbtDA/playlists?disable_polymer=1" target=_blank>SEJI올더어글리쿠키</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dob22ElqZLU?list=PLfIXdjLHvTEC6Sv3NHEAW_zpa8wlguecG" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MgO7Xmfgt9U?list=PLfIXdjLHvTEC6Sv3NHEAW_zpa8wlguecG" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+              </ul>
+            </li>
+          </h2>
+          <h2>
+            <li>카페 사장 v-log
+              <ul>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCsr86khxLo3PUkMKDtvZDyw/featured?disable_polymer=1" target=_blank>카페노예jun</a></h3>
+                  <p>
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/wJAZmGREaaI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/QbX9xguVvdA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCB8K-UT4ue5FiTXWjFofG0Q" target=_blank>아야 커피AYA COFFEE</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Whp4r5hYGyg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hCysrdKdX0I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCabdatPVZIBNH2QSWxzbvow" target=_blank>라떼파파_LATTE PAPA</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PmsHmWdP7pM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Cc1Zos-sin4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCfofr-kNiOGG_uVpnTe3Iuw" target=_blank>정현_CHOI</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/O2ypV3G--Yk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/K5KAtdmKeAs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCE-gE1KJ3qAjeQAD73UFUCA" target=_blank>쥬쥬레시피 joojoo</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rrsBQ_xNzJg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/p1lsQWYZkwo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UCI7F1vbLAHfSSPTQbjyFbXw" target=_blank>휘바 hwiba</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rrISTObXPCE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ff6uURs13AY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+              </ul>
+            </li>
+          </h2>
+          <h2>
+            <li>카페 알바
+              <ul>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UC2IFjOWQbPH-7fBoOE2vhXw" target=_blank>지니즈zinyz</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fVqqQS7EgRs?list=PLQcFVQ8VteX0P1vgO-svajmD2DtvTTbvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/p7BYirc54B0?list=PLQcFVQ8VteX0P1vgO-svajmD2DtvTTbvo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+                <li>
+                  <h3><a href="https://www.youtube.com/channel/UC3FUHElkJ1jYSMon0DsM4iA" target=_blank>곰B Gombi</a></h3>
+                  <p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2QXIhI7175A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </p>
+                </li>
+              </ul>
+            </li>
+            <li>다른 카페관련 영상 검색하기
+              <p>
+                <img src="images/youtube.jpg"  alt="youtube" usemap="#youtube">
+                <map name="youtube">
+                  <area shape="rect" coords="0,0,647,210" href="https://www.youtube.com/" target="_blank" alt="youtube로 이동하기">
+                </map>
+              </P>
+            </li>
+          </h2>
+        </ol>
+      </div>
+      <div id=footer>
+        <div id=fwrap>
+          <br>
+            고객상담(오프라인)010-0000-0000 ㅣ 상담 및 문의 : 12:00 ~ 20:00<br>
+            CAFE WHERE. ALL RIGHTS RESERVED.
+        </div>
+      </div>
+  </body>
+</html>
