@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CAFE WHRERE</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+      $('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+      var ss = $(this).attr("href");
+      $('html, body').animate({scrollTop:ss});
+      return false;
+      });
+      });
+    </script>
+    <script type="text/javascript">
+      var stmnLEFT = 10; // 오른쪽 여백
+      var stmnGAP1 = 0; // 위쪽 여백
+      var stmnGAP2 = 100; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+      var stmnBASE = 100; // 스크롤 시작위치
+      var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+      var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
+      var stmnTimer;
+      function RefreshStaticMenu() {
+      var stmnStartPoint, stmnEndPoint;
+      stmnStartPoint = parseInt(document.getElementById('header').style.top, 10);
+      stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+      if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+      if (stmnStartPoint != stmnEndPoint) {
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+      document.getElementById('header').style.top = parseInt(document.getElementById('header').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+      stmnRefreshTimer = stmnScrollSpeed;
+      }
+      stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+      }
+      function InitializeStaticMenu() {
+      document.getElementById('header').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치.
+      document.getElementById('header').style.top = document.body.scrollTop + stmnBASE + 'px';
+      RefreshStaticMenu();
+      }
+    </script>
+    <body onload="InitializeStaticMenu();"></body>
+  </head>
+  <body>
+    <div id=header>
+      <h1><strong>CAFE WHERE</strong></h1>
+      <div id=menu>
+        <ul>
+          <li><a href="index.html">ABOUT</li>
+          <li class="orange">CAFE</li>
+          <li><a href="map.html">MAP</a></li>
+          <li><a href="media.html">MEDIA</a></li>
+          <li><a href="personal.html">PERSONAL</a></li>
+          <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+          <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id=middle2>
+      <div id=cafe><h2>CAFE</h2>
+        <div class=nanu1>
+            <ul>
+              <li><h3>#데이트</h3>
+                <ul>
+                  <li><a href="https://store.naver.com/restaurants/detail?entry=plt&id=38401653&query=%EC%84%A4%EB%AC%B8%EC%BB%A4%ED%94%BC&tab=fsasReview">설문커피 & 설문단팥빵</a> (#편안한 #데이트 #로스팅 #단팥빵)
+                    <p>
+                      <img src="images/sulmun1.jpg" width=225px; height=300px;>
+                      <img src="images/sulmun2.jpg" width=250px; height=300px;>
+                      <img src="images/sulmun3.jpg" width=280px; height=300px;>
+                      <img src="images/sulmun4.jpg" width=290px; height=300px;><br>
+                    </p>
+                  </li>
+                  <li><a href="https://blog.naver.com/pp_blog">피스피스</a>(#치즈케이크 #디저트카페 #스콘)
+                    <p>
+                      <img src="images/piece1.jpg" width=230px; height=300px;>
+                      <img src="images/piece2.jpg" width=250px; height=300px;>
+                      <img src="images/piece3.jpg" width=290px; height=300px;>
+                      <img src="images/piece4.jpg" width=270px; height=300px;><br>
+                      <h3>BEST MENU
+                      <img src="images/pumkin.jpg" width=200px; height=200px;> <small>펌킨 파이 (BEST 1)</small>
+                      <img src="images/chocopie.jpg" width=200px; height=200px;> <small>초코 브릭파이 (BEST 2)</small>
+                      </h3>
+                    </p>
+                  </li>
+                  <li><a href="http://naver.me/FQd7Kktj">더츠커피팩토리</a>(#브런치카페 #드립커피 #팬케이크)
+                    <p>
+                      <img src="images/thats1.jpg" width=240px; height=300px;>
+                      <img src="images/thats2.jpg" width=270px; height=300px;>
+                      <img src="images/thats3.jpg" width=260px; height=300px;>
+                      <img src="images/thats4.jpg" width=270px; height=300px;><br>
+                      <h3>BEST MENU
+                        <img src="images/americano.jpg" width=200px; height=300px;><small>아메리카노</small>
+                        <img src="images/denish.jpg" width=300px; height=300px;><small>64겹 데니쉬</small>
+                      </h3>
+                    </p>
+                  </li>
+                </li>
+              </ul>
+            </li>
+            <li><h3>#기념일</h3>
+              <ul>
+                <li><a href="https://store.naver.com/restaurants/detail?entry=pll&id=58018096&query=%ED%96%89%EC%A3%BC%EC%82%B0%EC%84%B1%20%EC%B9%B4%ED%8E%98%20%EC%95%84%EB%9D%A0%EB%9E%91%EC%8A%A4">아띠랑스</a> (#카페 #화덕피자 #샌드위치 #친절함)
+                  <p>
+                    <img src="images/atti1.jpg" width=225px; height=300px;>
+                    <img src="images/atti2.jpg" width=250px; height=300px;>
+                    <img src="images/atti3.jpg" width=260px; height=300px;>
+                    <img src="images/atti4.jpg" width=270px; height=300px;><br>
+                    <h3>BEST MENU
+                      <img src="images/gorgonzollar.jpg" width=200px; height=200px;><small>고르곤졸라</small>
+                      <img src="images/berryberry.jpg" width=300px; height=200px;><small>베리베리 와플</small>
+                    </h3>
+                  </p>
+                </li>
+                <li><a href="http://naver.me/FMhkvdTC">카페애니골</a>(#카페 #와플 #치즈케이크 #모던한)
+                  <p>
+                    <img src="images/anni1.jpg" width=225px; height=300px;>
+                    <img src="images/anni2.jpg" width=250px; height=300px;>
+                    <img src="images/anni3.jpg" width=260px; height=300px;>
+                    <img src="images/anni4.jpg" width=270px; height=300px;><br>
+                  </p>
+                </li>
+              </ul>
+              <li><h3>#젊고 캐주얼한</h3>
+                <ul>
+                  <li><a href="https://store.naver.com/restaurants/detail?entry=pll&id=339420286&query=%EB%AC%B4%EB%AA%85%EC%BB%A4%ED%94%BC">무명커피</a>(#카페 #주스 #와플 #한지)
+                    <p>
+                      <img src="images/mo1.jpg" width=225px; height=300px;>
+                      <img src="images/mo2.jpg" width=250px; height=300px;>
+                      <img src="images/mo3.jpg" width=260px; height=300px;>
+                      <img src="images/mo4.jpg" width=270px; height=300px;><br>
+                      <h3>BEST MENU
+                        <img src="images/plat.jpg" width=200px; height=200px;><small>플랫슈페너(only ice)</small>
+                        <img src="images/cheezetart.jpg" width=300px; height=200px;><small>딸기치즈타르트(계절메뉴)</small>
+                      </h3>
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li><h3>다른 카페 검색하기</h3>
+                <div id="map_canvas1" class="naver-map">
+                  <iframe src="https://store.naver.com/restaurants/list?context=14&filterId=r02280&menu=1&query=%EA%B3%A0%EC%96%91%EC%8B%9C%20%EB%A7%9B%EC%A7%91&sessionid=bGJWZ7eBxmcYejZnrvG6TCwG" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="widget-area">
+                </div>
+              </li>
+            </ol>
+        </div>
+    </div>
+    <div id=footer>
+      <div id=fwrap>
+        <br>
+          고객상담(오프라인)010-0000-0000 ㅣ 상담 및 문의 : 12:00 ~ 20:00<br>
+          CAFE WHERE. ALL RIGHTS RESERVED.
+        </div>
+      </div>
+  </body>
+</html>
