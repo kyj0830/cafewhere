@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CAFE WHRERE</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+      $('.mov').click(function(){  // mov 클래스가 설정된 부분을 클릭하면 href에 적은 값만큼 세로로 스크롤 시킨다.
+      var ss = $(this).attr("href");
+      $('html, body').animate({scrollTop:ss});
+      return false;
+      });
+      });
+    </script>
+    <script type="text/javascript">
+      var stmnLEFT = 10; // 오른쪽 여백
+      var stmnGAP1 = 0; // 위쪽 여백
+      var stmnGAP2 = 100; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+      var stmnBASE = 100; // 스크롤 시작위치
+      var stmnActivateSpeed = 20; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+      var stmnScrollSpeed = 30; //스크롤 속도 (클수록 느림)
+      var stmnTimer;
+      function RefreshStaticMenu() {
+      var stmnStartPoint, stmnEndPoint;
+      stmnStartPoint = parseInt(document.getElementById('header').style.top, 10);
+      stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+      if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+      if (stmnStartPoint != stmnEndPoint) {
+      stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+      document.getElementById('header').style.top = parseInt(document.getElementById('header').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+      stmnRefreshTimer = stmnScrollSpeed;
+      }
+      stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+      }
+      function InitializeStaticMenu() {
+      document.getElementById('header').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치.
+      document.getElementById('header').style.top = document.body.scrollTop + stmnBASE + 'px';
+      RefreshStaticMenu();
+      }
+    </script>
+    <body onload="InitializeStaticMenu();"></body>
+  </head>
+  <body>
+    <div id=header>
+      <h1><strong>CAFE WHERE</strong></h1>
+      <div id=menu>
+        <ul>
+          <li><a href="index.html">ABOUT</li>
+          <li><a href="cafe.html">CAFE</a></li>
+          <li class="orange">MAP</li>
+          <li><a href="media.html">MEDIA</a></li>
+          <li><a href="personal.html">PERSONAL</a></li>
+          <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+          <li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id=middle3>
+      <div id=map><h1>MAP</h1>
+        <h2><a  href="https://map.naver.com/v5/search?c=14126851.1449612,4537604.8687197,15,0,0,0,dh" target=_blank;>원하는 카페 검색하기</a><h2>
+        <div id="map_canvas" class="google-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d510556.5282242006!2d127.26521723209616!3d37.48783389982084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1588051745918!5m2!1sko!2skr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div class="widget-area">
+        </div>
+    </div>
+    <div id=footer>
+      <div id=fwrap>
+        <br>
+          고객상담(오프라인)010-0000-0000 ㅣ 상담 및 문의 : 12:00 ~ 20:00<br>
+          CAFE WHERE. ALL RIGHTS RESERVED.
+      </div>
+    </div>
+  </body>
+</html>
